@@ -30,7 +30,6 @@ export default function Agendar() {
       </section>
 
       {/* Formulário de Agendamento */}
-      {/* Formulário de Agendamento */}
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-4xl mx-auto bg-stone-50 border border-stone-200 rounded-2xl shadow-lg p-10">
           <h2 className="text-3xl font-bold text-stone-800 mb-4 text-center">
