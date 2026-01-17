@@ -78,7 +78,7 @@ export default function Header() {
           {/* Botões CTA */}
           <div className="flex flex-col md:flex-row w-full md:w-auto gap-4 mt-4 md:mt-0">
             <Link
-              to="/login"
+              to="/auth/login"
               className="border border-amber-400 text-amber-400 px-4 py-2 rounded-lg hover:bg-amber-400 hover:text-stone-900 transition flex items-center justify-center gap-2 w-full md:w-auto"
             >
               <i className="fas fa-user"></i>
