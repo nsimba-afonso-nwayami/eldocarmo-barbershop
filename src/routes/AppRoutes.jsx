@@ -8,6 +8,9 @@ import Galeria from "../pages/site/Galeria";
 import Contato from "../pages/site/Contato";
 import NotFound from "../pages/site/NotFound";
 
+//Auth
+import Login from "../pages/auth/Login";
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -19,6 +22,9 @@ export default function AppRoutes() {
       <Route path="/galeria" element={<Galeria />} />
       <Route path="/contato" element={<Contato />} />
       <Route path="*" element={<NotFound />} />
+
+      {/*Rotas de auth */}
+      <Route path="/auth/login" element={<Login />} />
     </Routes>
   );
 }
