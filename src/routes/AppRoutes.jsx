@@ -45,13 +45,12 @@ export default function AppRoutes() {
       <Route path="/dashboard/admin/">
         <Route path="" element={<DashboardAdmin />} />
         <Route path="agendamentos" element={<AgendamentosAdmin />} />
-        <Route path="clientes" element={<AgendamentosAdmin />} />
-        <Route path="profissionais" element={<AgendamentosAdmin />} />
-        <Route path="servicos" element={<AgendamentosAdmin />} />
-        <Route path="agendamentos" element={<AgendamentosAdmin />} />
-        <Route path="galeria" element={<AgendamentosAdmin />} />
-        <Route path="perfil" element={<AgendamentosAdmin />} />
-        <Route path="notificacoes" element={<AgendamentosAdmin />} />
+        <Route path="clientes" element={<ClientesAdmin />} />
+        <Route path="profissionais" element={<ProfissionaisAdmin />} />
+        <Route path="servicos" element={<ServicosAdmin />} />
+        <Route path="galeria" element={<GaleriaAdmin />} />
+        <Route path="perfil" element={<PerfilAdmin />} />
+        <Route path="notificacoes" element={<NotificacoesAdmin />} />
         <Route path="*" element={<NotFoundAdmin />} />
       </Route>
     </Routes>
