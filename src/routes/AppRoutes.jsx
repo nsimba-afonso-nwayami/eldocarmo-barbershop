@@ -13,6 +13,17 @@ import Login from "../pages/auth/Login";
 import Cadastrar from "../pages/auth/Cadastrar";
 import EsqueceuSenha from "../pages/auth/EsqueceuSenha";
 
+//Admin
+import DashboardAdmin from "../pages/admin/DashboardAdmin";
+import AgendamentosAdmin from "../pages/admin/AgendamentosAdmin";
+import ClientesAdmin from "../pages/admin/ClientesAdmin";
+import ProfissionaisAdmin from "../pages/admin/ProfissionaisAdmin";
+import ServicosAdmin from "../pages/admin/ServicosAdmin";
+import GaleriaAdmin from "../pages/admin/GaleriaAdmin";
+import PerfilAdmin from "../pages/admin/PerfilAdmin";
+import NotificacoesAdmin from "../pages/admin/NotificacoesAdmin";
+import NotFoundAdmin from "../pages/admin/NotFoundAdmin";
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -31,6 +42,18 @@ export default function AppRoutes() {
       <Route path="/auth/esqueceu-senha" element={<EsqueceuSenha />} />
 
       {/*Rotas do dashboard admin */}
+      <Route path="/dashboard/admin/">
+        <Route path="" element={<DashboardAdmin />} />
+        <Route path="agendamentos" element={<AgendamentosAdmin />} />
+        <Route path="clientes" element={<AgendamentosAdmin />} />
+        <Route path="profissionais" element={<AgendamentosAdmin />} />
+        <Route path="servicos" element={<AgendamentosAdmin />} />
+        <Route path="agendamentos" element={<AgendamentosAdmin />} />
+        <Route path="galeria" element={<AgendamentosAdmin />} />
+        <Route path="perfil" element={<AgendamentosAdmin />} />
+        <Route path="notificacoes" element={<AgendamentosAdmin />} />
+        <Route path="*" element={<NotFoundAdmin />} />
+      </Route>
     </Routes>
   );
 }
