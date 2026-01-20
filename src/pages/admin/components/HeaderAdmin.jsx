@@ -34,7 +34,7 @@ export default function HeaderAdmin({ sidebarOpen, setSidebarOpen, title }) {
         <div className="flex items-center gap-3">
           <span className="text-sm text-stone-200 hidden sm:block">Admin</span>
           <Link
-            to="/dashboard/admin/configuracoes"
+            to="/dashboard/admin/perfil"
             className="w-9 h-9 bg-amber-400 rounded-full flex items-center justify-center"
           >
             <i className="fas fa-user text-stone-900"></i>

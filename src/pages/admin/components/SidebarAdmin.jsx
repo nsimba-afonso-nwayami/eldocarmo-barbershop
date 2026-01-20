@@ -88,11 +88,11 @@ export default function SidebarAdmin({ sidebarOpen, setSidebarOpen }) {
             </Link>
 
             <Link
-              to="/dashboard/admin/configuracoes"
+              to="/dashboard/admin/perfil"
               className="block p-3 rounded-lg text-stone-50 hover:bg-stone-700 transition font-medium"
             >
-              <i className="fas fa-gear mr-3 text-amber-400"></i>
-              Configurações
+              <i className="fas fa-user mr-3 text-amber-400"></i>
+              Meu perfil
             </Link>
           </nav>
         </div>
@@ -101,7 +101,7 @@ export default function SidebarAdmin({ sidebarOpen, setSidebarOpen }) {
         <div className="pt-6 border-t border-stone-700">
           <button
             onClick={handleLogout}
-            className="flex items-center w-full p-3 rounded-lg text-stone-50 hover:bg-red-500/20 transition font-semibold"
+            className="flex items-center cursor-pointer w-full p-3 rounded-lg text-stone-50 hover:bg-red-500/20 transition font-semibold"
           >
             <i className="fas fa-sign-out-alt mr-3"></i>
             Sair
