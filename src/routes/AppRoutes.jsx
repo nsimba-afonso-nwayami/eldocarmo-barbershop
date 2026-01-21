@@ -26,6 +26,10 @@ import NotFoundAdmin from "../pages/admin/NotFoundAdmin";
 
 //Profissional
 import DashboardProfissional from "../pages/profissional/DashboardProfissional";
+import AgendamentosProfissional from "../pages/profissional/AgendamentosProfissional";
+import GaleriaProfissional from "../pages/profissional/GaleriaProfissional";
+import PerfilProfissional from "../pages/profissional/PerfilProfissional";
+import NotificacoesProfissional from "../pages/profissional/NotificacoesProfissional";
 import NotFoundProfissional from "../pages/profissional/NotFoundProfissional";
 
 export default function AppRoutes() {
@@ -58,9 +62,13 @@ export default function AppRoutes() {
         <Route path="*" element={<NotFoundAdmin />} />
       </Route>
 
-      {/*Rotas do dashboard admin */}
+      {/*Rotas do dashboard profissional */}
       <Route path="/dashboard/profissional/">
         <Route path="" element={<DashboardProfissional />} />
+        <Route path="agendamentos" element={<AgendamentosProfissional />} />
+        <Route path="galeria" element={<GaleriaProfissional />} />
+        <Route path="perfil" element={<PerfilProfissional />} />
+        <Route path="notificacoes" element={<NotificacoesProfissional />} />
         <Route path="*" element={<NotFoundProfissional  />} />
       </Route>
     </Routes>
