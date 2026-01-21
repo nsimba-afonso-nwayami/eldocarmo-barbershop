@@ -1,6 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { esqueceuSenhaSchema } from "../../validations/esqueceuSenhaSchema";
 
 export default function EsqueceuSenha() {
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(esqueceuSenhaSchema),
+  });
+
+  const onSubmit = async (data) => {
+    const toastId = toast.loading("Processando...");
+    try {
+      // Simula envio para API
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      toast.success("Link de redefinição enviado!", { id: toastId });
+      // Opcional: redirecionar para login após sucesso
+      navigate("/auth/login");
+    } catch (err) {
+      toast.error("Erro ao enviar o link. Tente novamente.", { id: toastId });
+    }
+  };
+
   return (
     <>
       <title>Recuperar conta | Eldocarmo Barbershop</title>
@@ -22,7 +50,7 @@ export default function EsqueceuSenha() {
             Informe seu email e enviaremos um link para redefinir sua senha.
           </p>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Email */}
             <div className="relative">
               <label className="block mb-2 text-stone-800 font-semibold">
@@ -34,9 +62,18 @@ export default function EsqueceuSenha() {
               <input
                 type="email"
                 placeholder="Digite seu email"
-                className="w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.email
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Botão Enviar */}
@@ -57,7 +94,10 @@ export default function EsqueceuSenha() {
 
             <p className="text-center text-sm text-stone-600">
               Não tem uma conta?{" "}
-              <Link to="/auth/cadastrar" className="text-amber-400 hover:underline">
+              <Link
+                to="/auth/cadastrar"
+                className="text-amber-400 hover:underline"
+              >
                 Cadastre-se
               </Link>
             </p>
