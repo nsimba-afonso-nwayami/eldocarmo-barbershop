@@ -32,6 +32,13 @@ import PerfilProfissional from "../pages/profissional/PerfilProfissional";
 import NotificacoesProfissional from "../pages/profissional/NotificacoesProfissional";
 import NotFoundProfissional from "../pages/profissional/NotFoundProfissional";
 
+//Cliente
+import DashboardCliente from "../pages/cliente/DashboardCliente";
+import AgendamentosCliente from "../pages/cliente/AgendamentosCliente";
+import PerfilCliente from "../pages/cliente/PerfilCliente";
+import NotificacoesCliente from "../pages/cliente/NotificacoesCliente";
+import NotFoundCliente from "../pages/cliente/NotFoundCliente";
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -70,6 +77,15 @@ export default function AppRoutes() {
         <Route path="perfil" element={<PerfilProfissional />} />
         <Route path="notificacoes" element={<NotificacoesProfissional />} />
         <Route path="*" element={<NotFoundProfissional  />} />
+      </Route>
+
+      {/*Rotas do dashboard cliente */}
+      <Route path="/dashboard/cliente/">
+        <Route path="" element={<DashboardCliente />} />
+        <Route path="agendamentos" element={<AgendamentosCliente />} />
+        <Route path="perfil" element={<PerfilCliente />} />
+        <Route path="notificacoes" element={<NotificacoesCliente />} />
+        <Route path="*" element={<NotFoundCliente  />} />
       </Route>
     </Routes>
   );
