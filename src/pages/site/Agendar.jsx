@@ -1,8 +1,45 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { agendamentoSchema } from "../../validations/agendamentoSchema";
 
 export default function Agendar() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(agendamentoSchema),
+  });
+
+  const onSubmit = async (data) => {
+    // Mostra toast de loading
+    const toastId = toast.loading("Processando agendamento...");
+
+    try {
+      // Simula envio assíncrono (substitua pelo fetch/axios real)
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 segundos de delay
+
+      console.log("Agendamento enviado:", data);
+
+      // Atualiza o toast para sucesso
+      toast.success("Agendamento realizado com sucesso!", {
+        id: toastId, // substitui o toast de loading
+      });
+
+      reset(); // limpa o formulário
+    } catch (error) {
+      // Atualiza o toast para erro
+      toast.error("Erro ao enviar agendamento. Tente novamente.", {
+        id: toastId,
+      });
+    }
+  };
+
   return (
     <>
       <title>Agendar | Eldocarmo Barbershop</title>
@@ -40,7 +77,10 @@ export default function Agendar() {
             horário.
           </p>
 
-          <form className="grid gap-6 md:grid-cols-2 md:gap-8">
+          <form
+            className="grid gap-6 md:grid-cols-2 md:gap-8"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             {/* Nome */}
             <div className="md:col-span-2">
               <label className="block text-stone-800 font-medium mb-2">
@@ -49,9 +89,18 @@ export default function Agendar() {
               <input
                 type="text"
                 placeholder="Digite seu nome completo"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.nome
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("nome")}
               />
+              {errors.nome && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.nome.message}
+                </p>
+              )}
             </div>
 
             {/* Telefone */}
@@ -61,10 +110,19 @@ export default function Agendar() {
               </label>
               <input
                 type="tel"
-                placeholder="Ex: 9XX XXX XXX"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                placeholder="Ex: 923 456 789"
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.telefone
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("telefone")}
               />
+              {errors.telefone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.telefone.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -75,18 +133,32 @@ export default function Agendar() {
               <input
                 type="email"
                 placeholder="Digite seu email"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.email
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
-            {/* Seleção de Serviço */}
+            {/* Serviço */}
             <div>
               <label className="block text-stone-800 font-medium mb-2">
                 Serviço
               </label>
               <select
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.servico
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("servico")}
               >
                 <option value="">Selecione o serviço</option>
                 <option>Corte de Cabelo</option>
@@ -94,16 +166,25 @@ export default function Agendar() {
                 <option>Tratamentos Capilares</option>
                 <option>Coloração</option>
               </select>
+              {errors.servico && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.servico.message}
+                </p>
+              )}
             </div>
 
-            {/* Seleção de Profissional */}
+            {/* Profissional */}
             <div>
               <label className="block text-stone-800 font-medium mb-2">
                 Profissional
               </label>
               <select
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.profissional
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("profissional")}
               >
                 <option value="">Selecione o profissional</option>
                 <option>Eldocarmo</option>
@@ -111,6 +192,11 @@ export default function Agendar() {
                 <option>Lucas</option>
                 <option>Miguel</option>
               </select>
+              {errors.profissional && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.profissional.message}
+                </p>
+              )}
             </div>
 
             {/* Data */}
@@ -120,9 +206,18 @@ export default function Agendar() {
               </label>
               <input
                 type="date"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.data
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("data")}
               />
+              {errors.data && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.data.message}
+                </p>
+              )}
             </div>
 
             {/* Horário */}
@@ -132,9 +227,18 @@ export default function Agendar() {
               </label>
               <input
                 type="time"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.hora
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("hora")}
               />
+              {errors.hora && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.hora.message}
+                </p>
+              )}
             </div>
 
             {/* Botão */}
