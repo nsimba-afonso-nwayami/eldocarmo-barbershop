@@ -1,9 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { cadastrarSchema } from "../../validations/cadastrarSchema";
 
 export default function Cadastrar() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(cadastrarSchema),
+  });
+
+  const onSubmit = async (data) => {
+    const toastId = toast.loading("Processando cadastro...");
+    try {
+      // Simula envio para API
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      toast.success("Cadastro realizado com sucesso!", { id: toastId });
+      reset();
+      navigate("/dashboard/cliente");
+    } catch (err) {
+      toast.error("Erro ao cadastrar. Tente novamente.", { id: toastId });
+    }
+  };
 
   return (
     <>
@@ -22,7 +50,7 @@ export default function Cadastrar() {
             Cadastrar-se
           </h2>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Nome */}
             <div className="relative">
               <label className="block mb-2 text-stone-800 font-semibold">
@@ -34,9 +62,18 @@ export default function Cadastrar() {
               <input
                 type="text"
                 placeholder="Digite seu nome"
-                className="w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.nome
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("nome")}
               />
+              {errors.nome && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.nome.message}
+                </p>
+              )}
             </div>
 
             {/* Sexo */}
@@ -45,14 +82,23 @@ export default function Cadastrar() {
                 Sexo
               </label>
               <select
-                className="w-full pl-3 pr-3 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-3 pr-3 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.sexo
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("sexo")}
               >
                 <option value="">Selecione seu sexo</option>
                 <option value="masculino">Masculino</option>
                 <option value="feminino">Feminino</option>
                 <option value="outro">Outro</option>
               </select>
+              {errors.sexo && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.sexo.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -66,9 +112,18 @@ export default function Cadastrar() {
               <input
                 type="email"
                 placeholder="Digite seu email"
-                className="w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.email
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Telefone */}
@@ -81,10 +136,19 @@ export default function Cadastrar() {
               </span>
               <input
                 type="tel"
-                placeholder="Ex: 9XX XXX XXX"
-                className="w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                placeholder="Ex: 923 456 789"
+                className={`w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.telefone
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("telefone")}
               />
+              {errors.telefone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.telefone.message}
+                </p>
+              )}
             </div>
 
             {/* Senha */}
@@ -98,8 +162,12 @@ export default function Cadastrar() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Digite sua senha"
-                className="w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.senha
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("senha")}
               />
               <span
                 className="absolute right-3 top-10.5 text-stone-400 cursor-pointer"
@@ -109,6 +177,11 @@ export default function Cadastrar() {
                   className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
                 ></i>
               </span>
+              {errors.senha && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.senha.message}
+                </p>
+              )}
             </div>
 
             {/* Confirmar Senha */}
@@ -122,8 +195,12 @@ export default function Cadastrar() {
               <input
                 type={showConfirm ? "text" : "password"}
                 placeholder="Confirme sua senha"
-                className="w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.confirmarSenha
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("confirmarSenha")}
               />
               <span
                 className="absolute right-3 top-10.5 text-stone-400 cursor-pointer"
@@ -133,6 +210,11 @@ export default function Cadastrar() {
                   className={`fas ${showConfirm ? "fa-eye-slash" : "fa-eye"}`}
                 ></i>
               </span>
+              {errors.confirmarSenha && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.confirmarSenha.message}
+                </p>
+              )}
             </div>
 
             {/* Botão Cadastrar */}

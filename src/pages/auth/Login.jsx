@@ -1,8 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { loginSchema } from "../../validations/loginSchema";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  // React-hook-form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  // Função de envio
+  const onSubmit = async (data) => {
+    const toastId = toast.loading("Processando login...");
+    try {
+      // Simulando envio e verificação de login (API)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      toast.success("Login realizado com sucesso!", { id: toastId });
+
+      // Redirecionar para dashboard admin
+      navigate("/dashboard/admin");
+    } catch (err) {
+      toast.error("Erro ao realizar login. Tente novamente.", { id: toastId });
+    }
+  };
 
   return (
     <>
@@ -21,46 +51,50 @@ export default function Login() {
             Eldocarmo Login
           </h2>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Email */}
             <div className="relative">
-              <label className="block mb-2 text-stone-800 font-semibold">
-                Email
-              </label>
+              <label className="block mb-2 text-stone-800 font-semibold">Email</label>
               <span className="absolute left-3 top-10.5 text-stone-400">
                 <i className="fas fa-envelope"></i>
               </span>
               <input
                 type="email"
                 placeholder="Digite seu email"
-                className="w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.email ? "border-red-500 focus:ring-red-400" : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Senha */}
             <div className="relative">
-              <label className="block mb-2 text-stone-800 font-semibold">
-                Senha
-              </label>
+              <label className="block mb-2 text-stone-800 font-semibold">Senha</label>
               <span className="absolute left-3 top-10.5 text-stone-400">
                 <i className="fas fa-lock"></i>
               </span>
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Digite sua senha"
-                className="w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border border-stone-300 focus:border-amber-400 transition"
-                required
+                className={`w-full pl-10 pr-10 p-3 rounded-lg bg-stone-100 text-stone-900 focus:outline-none border ${
+                  errors.senha ? "border-red-500 focus:ring-red-400" : "border-stone-300 focus:border-amber-400"
+                } transition`}
+                {...register("senha")}
               />
               {/* Ícone de olho */}
               <span
                 className="absolute right-3 top-10.5 text-stone-400 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                <i
-                  className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
-                ></i>
+                <i className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
               </span>
+              {errors.senha && (
+                <p className="text-red-500 text-sm mt-1">{errors.senha.message}</p>
+              )}
             </div>
 
             {/* Botão Entrar */}
