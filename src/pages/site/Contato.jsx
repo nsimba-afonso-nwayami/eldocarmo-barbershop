@@ -1,8 +1,37 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { contatoSchema } from "../../validations/contatoSchema"; // Crie este arquivo com o schema yup
 
 export default function Contato() {
+  // Dentro do componente Contato(), substitua o <form> antigo por este:
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(contatoSchema),
+  });
+
+  const onSubmit = async (data) => {
+    const toastId = toast.loading("Processando...");
+    try {
+      // Simula envio assíncrono, aqui você chamaria sua API
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      console.log("Mensagem enviada:", data);
+
+      toast.success("Mensagem enviada com sucesso!", { id: toastId });
+      reset();
+    } catch (err) {
+      toast.error("Erro ao enviar mensagem. Tente novamente.", { id: toastId });
+    }
+  };
+
   return (
     <>
       <title>Contato | Eldocarmo Barbershop</title>
@@ -96,7 +125,7 @@ export default function Contato() {
             possível.
           </p>
 
-          <form className="grid gap-6">
+          <form className="grid gap-6" onSubmit={handleSubmit(onSubmit)}>
             {/* Nome */}
             <div>
               <label className="block text-stone-800 font-medium mb-2">
@@ -105,9 +134,18 @@ export default function Contato() {
               <input
                 type="text"
                 placeholder="Seu nome"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.nome
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("nome")}
               />
+              {errors.nome && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.nome.message}
+                </p>
+              )}
             </div>
 
             {/* Telefone */}
@@ -118,9 +156,18 @@ export default function Contato() {
               <input
                 type="tel"
                 placeholder="Seu telefone"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.telefone
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("telefone")}
               />
+              {errors.telefone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.telefone.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -131,9 +178,18 @@ export default function Contato() {
               <input
                 type="email"
                 placeholder="Seu email"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.email
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Assunto */}
@@ -144,9 +200,18 @@ export default function Contato() {
               <input
                 type="text"
                 placeholder="Assunto da mensagem"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none ${
+                  errors.assunto
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("assunto")}
               />
+              {errors.assunto && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.assunto.message}
+                </p>
+              )}
             </div>
 
             {/* Mensagem */}
@@ -157,9 +222,18 @@ export default function Contato() {
               <textarea
                 rows="5"
                 placeholder="Digite sua mensagem"
-                className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-400 focus:outline-none resize-none"
-                required
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none resize-none ${
+                  errors.mensagem
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-stone-300 focus:ring-amber-400"
+                }`}
+                {...register("mensagem")}
               ></textarea>
+              {errors.mensagem && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.mensagem.message}
+                </p>
+              )}
             </div>
 
             {/* Botão */}
