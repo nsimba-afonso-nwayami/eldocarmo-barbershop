@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex mt-6 space-x-4">
             {/* Redes sociais */}
             <a
-              href="#"
+              href="https://www.facebook.com/EldoCarmoBeleza/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 text-stone-500 bg-neutral-800 rounded-full border border-stone-700 shadow-md hover:text-stone-50 hover:bg-amber-400 hover:border-amber-400 hover:shadow-lg transform hover:scale-110 transition duration-300"
@@ -22,7 +22,7 @@ export default function Footer() {
               <i className="fab fa-facebook-f text-lg"></i>
             </a>
             <a
-              href="#"
+              href="https://www.tiktok.com/@el_do_carmo"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 text-stone-500 bg-neutral-800 rounded-full border border-stone-700 shadow-md hover:text-stone-50 hover:bg-amber-400 hover:border-amber-400 hover:shadow-lg transform hover:scale-110 transition duration-300"
@@ -30,7 +30,7 @@ export default function Footer() {
               <i className="fab fa-tiktok text-lg"></i>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/eldo_carmo"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 text-stone-500 bg-neutral-800 rounded-full border border-stone-700 shadow-md hover:text-stone-50 hover:bg-amber-400 hover:border-amber-400 hover:shadow-lg transform hover:scale-110 transition duration-300"
@@ -99,7 +99,7 @@ export default function Footer() {
             <p>
               <i className="fas fa-envelope mr-2 text-amber-400"></i>
               <a
-                href="mailto:contato@eldocarmobarbershop.com"
+                href="mailto:crisfadocarmo@gmail.com"
                 className="hover:text-amber-400 transition"
               >
                 crisfadocarmo@gmail.com
