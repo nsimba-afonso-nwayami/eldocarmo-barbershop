@@ -64,18 +64,24 @@ export default function Footer() {
           <div className="text-stone-500 space-y-3">
             <p>
               <i className="fas fa-map-marker-alt mr-2 text-amber-400"></i>
-              Rua Exemplo, 123, Luanda, Angola
+              Centralidade do Kilamba, Bloco V17 (Barbearia) / W19 (caleireiro). Luanda, Angola
             </p>
             <p>
               <i className="fas fa-phone mr-2 text-amber-400"></i>
-              <a href="tel:+244923000000" className="hover:text-amber-400 transition">
-                +244 923 000 000
+              <a href="tel:+244925184386" className="hover:text-amber-400 transition">
+                +244 925 184 386
+              </a>
+            </p>
+            <p>
+              <i className="fas fa-phone mr-2 text-amber-400"></i>
+              <a href="tel:+244923929074" className="hover:text-amber-400 transition">
+                +244 923 929 074
               </a>
             </p>
             <p>
               <i className="fas fa-envelope mr-2 text-amber-400"></i>
               <a href="mailto:contato@eldocarmobarbershop.com" className="hover:text-amber-400 transition">
-                contato@eldocarmobarbershop.com
+                crisfadocarmo@gmail.com
               </a>
             </p>
           </div>
