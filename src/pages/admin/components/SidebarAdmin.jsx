@@ -88,6 +88,14 @@ export default function SidebarAdmin({ sidebarOpen, setSidebarOpen }) {
             </Link>
 
             <Link
+              to="/dashboard/admin/relatorios"
+              className="block p-3 rounded-lg text-stone-50 hover:bg-stone-700 transition font-medium"
+            >
+              <i className="fas fa-chart-line mr-3 text-amber-400"></i>
+              Relatórios
+            </Link>
+
+            <Link
               to="/dashboard/admin/perfil"
               className="block p-3 rounded-lg text-stone-50 hover:bg-stone-700 transition font-medium"
             >
