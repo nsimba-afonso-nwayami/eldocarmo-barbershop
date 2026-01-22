@@ -22,6 +22,7 @@ import ServicosAdmin from "../pages/admin/ServicosAdmin";
 import GaleriaAdmin from "../pages/admin/GaleriaAdmin";
 import PerfilAdmin from "../pages/admin/PerfilAdmin";
 import NotificacoesAdmin from "../pages/admin/NotificacoesAdmin";
+import RelatoriosAdmin from "../pages/admin/RelatoriosAdmin";
 import NotFoundAdmin from "../pages/admin/NotFoundAdmin";
 
 //Profissional
@@ -66,6 +67,7 @@ export default function AppRoutes() {
         <Route path="galeria" element={<GaleriaAdmin />} />
         <Route path="perfil" element={<PerfilAdmin />} />
         <Route path="notificacoes" element={<NotificacoesAdmin />} />
+        <Route path="relatorios" element={<RelatoriosAdmin />} />
         <Route path="*" element={<NotFoundAdmin />} />
       </Route>
 
