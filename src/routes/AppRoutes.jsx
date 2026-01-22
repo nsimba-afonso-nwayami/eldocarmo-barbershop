@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 //Site
 import Home from "../pages/site/Home";
 import Sobre from "../pages/site/Sobre";
+import HorariosMarcados from "../pages/site/HorariosMarcados";
 import Agendar from "../pages/site/Agendar";
 import Servicos from "../pages/site/Servicos";
 import Galeria from "../pages/site/Galeria";
@@ -46,6 +47,7 @@ export default function AppRoutes() {
       {/*Rotas do site */}
       <Route path="/" element={<Home />} />
       <Route path="/sobre" element={<Sobre />} />
+      <Route path="/horarios-marcados" element={<HorariosMarcados />} />
       <Route path="/agendar" element={<Agendar />} />
       <Route path="/servicos" element={<Servicos />} />
       <Route path="/galeria" element={<Galeria />} />
