@@ -331,12 +331,12 @@ export default function Home() {
                 Telefone / WhatsApp
               </h3>
               <a
-                href="https://wa.me/244000000000"
+                href="https://wa.me/244925184386"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-stone-500 hover:text-amber-400 transition"
               >
-                +244 000 000 000
+                +244 925 184 386
               </a>
             </div>
 
@@ -347,7 +347,8 @@ export default function Home() {
                 Endereço
               </h3>
               <p className="text-stone-500">
-                Rua Exemplo, Nº 123 <br />
+                Centralidade do Kilamba, Bloco V17 (Barbearia) / W19
+                (caleireiro) <br />
                 Luanda, Angola
               </p>
             </div>
