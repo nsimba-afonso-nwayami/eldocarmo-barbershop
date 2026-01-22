@@ -54,6 +54,11 @@ export default function RelatoriosAdmin() {
     { nome: "Miguel", total: 160000 },
   ];
 
+  const totalServicos = servicosMaisUsados.reduce(
+    (acc, item) => acc + item.value,
+    0,
+  );
+
   return (
     <>
       <title>Relatórios | Eldocarmo Barbershop</title>
@@ -112,25 +117,60 @@ export default function RelatoriosAdmin() {
 
           {/* SERVIÇOS MAIS REALIZADOS */}
           <Card title="Serviços Mais Realizados">
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={servicosMaisUsados}
-                  dataKey="value"
-                  nameKey="name"
-                  outerRadius={110}
-                  label
-                >
-                  {servicosMaisUsados.map((_, index) => (
-                    <Cell
-                      key={index}
-                      fill={CHART_COLORS[index % CHART_COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              {/* GRÁFICO */}
+              <ResponsiveContainer width="100%" height={260}>
+                <PieChart>
+                  <Pie
+                    data={servicosMaisUsados}
+                    dataKey="value"
+                    nameKey="name"
+                    outerRadius={90}
+                  >
+                    {servicosMaisUsados.map((_, index) => (
+                      <Cell
+                        key={index}
+                        fill={CHART_COLORS[index % CHART_COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+
+              {/* LEGENDA LATERAL */}
+              <div className="w-full md:w-1/2 space-y-3">
+                {servicosMaisUsados.map((item, index) => {
+                  const percent = ((item.value / totalServicos) * 100).toFixed(
+                    1,
+                  );
+
+                  return (
+                    <div
+                      key={item.name}
+                      className="flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="w-3 h-3 rounded-full"
+                          style={{
+                            backgroundColor:
+                              CHART_COLORS[index % CHART_COLORS.length],
+                          }}
+                        ></span>
+                        <span className="text-sm text-stone-700">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      <span className="text-sm font-semibold text-stone-800">
+                        {percent}%
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </Card>
 
           {/* PROFISSIONAIS COM MAIS AGENDAMENTOS */}
