@@ -50,6 +50,9 @@ export default function Header() {
           <Link to="/sobre" className="hover:text-amber-400 transition-colors">
             Sobre
           </Link>
+          <Link to="/horarios-marcados" className="hover:text-amber-400 transition-colors">
+            Horários Marcados
+          </Link>
           <Link
             to="/agendar"
             className="hover:text-amber-400 transition-colors"
