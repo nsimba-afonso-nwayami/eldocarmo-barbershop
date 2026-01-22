@@ -370,10 +370,9 @@ export default function Home() {
           <div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
             <iframe
               title="Mapa Eldocarmo Barbershop - Luanda"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.123456789!2d13.2345678!3d-8.8361234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a5223456789abcd%3A0xabcdef1234567890!2sLuanda!5e0!3m2!1spt-PT!2sao!4v1699999999999!5m2!1spt-PT!2sao"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.67415850549!2d13.27439547414212!3d-9.00209989270509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a521de302ac3f89%3A0x8737da70b83c0ff4!2sEldocarmo%20Barbershop!5e0!3m2!1spt-PT!2sao!4v1769084937386!5m2!1spt-PT!2sao"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               className="w-full h-64 md:h-96 border-0"
-              allowFullScreen=""
-              loading="lazy"
             ></iframe>
           </div>
         </div>
