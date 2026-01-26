@@ -115,7 +115,7 @@ export default function Footer() {
       {/* Créditos e CTA */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row justify-between items-center text-stone-500 text-sm">
         <p>
-          &copy; {new Date().getFullYear()} Eldocarmo Barbershop. Todos os
+          &copy; {new Date().getFullYear()} N.WAYAMI. Todos os
           direitos reservados.
         </p>
         <Link
