@@ -2,7 +2,7 @@ import ClienteLayout from "./components/ClienteLayout";
 import { useState } from "react";
 
 export default function PerfilCliente() {
-  const [foto, setFoto] = useState(null);
+  const [foto, setFoto] = useState("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgJ1FO3FHIR9B-BULDxnMCDBg19lJSDqozeZ9GvQyMZVwc1D01Ck1GVRNjOCUW");
   const [nome, setNome] = useState("João da Silva");
   const [email, setEmail] = useState("joao@email.com");
   const [telefone, setTelefone] = useState("+244 923 111 222");
