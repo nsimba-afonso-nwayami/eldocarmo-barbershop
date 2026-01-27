@@ -9,6 +9,7 @@ export default function HorariosMarcados() {
       id: 1,
       nome: "João Pereira",
       servico: "Corte Masculino",
+      barbeiro: "Carlos",
       data: "20/01/2026",
       hora: "09:00",
     },
@@ -16,6 +17,7 @@ export default function HorariosMarcados() {
       id: 2,
       nome: "Carlos Mendes",
       servico: "Barba",
+      barbeiro: "André",
       data: "20/01/2026",
       hora: "10:30",
     },
@@ -23,6 +25,7 @@ export default function HorariosMarcados() {
       id: 3,
       nome: "André Silva",
       servico: "Corte + Barba",
+      barbeiro: "Miguel",
       data: "21/01/2026",
       hora: "14:00",
     },
@@ -63,6 +66,14 @@ export default function HorariosMarcados() {
               className="flex-1 p-3 rounded-lg bg-stone-50 border border-stone-300 focus:outline-none focus:border-amber-400"
             />
 
+            {/* FILTRO DE BARBEIROS */}
+            <select className="p-3 rounded-lg bg-stone-50 border border-stone-300 focus:outline-none focus:border-amber-400">
+              <option value="">Todos os barbeiros</option>
+              <option value="Carlos">Carlos</option>
+              <option value="André">André</option>
+              <option value="Miguel">Miguel</option>
+            </select>
+
             <button
               type="submit"
               className="px-6 py-3 rounded-lg bg-amber-400 hover:bg-amber-500 font-semibold text-stone-50 transition"
@@ -90,13 +101,22 @@ export default function HorariosMarcados() {
                   <h3 className="text-xl font-semibold text-stone-800">
                     {item.nome}
                   </h3>
+
                   <p className="text-stone-500 text-sm">{item.servico}</p>
+
+                  <p className="text-stone-500 text-sm">
+                    Barbeiro:{" "}
+                    <span className="font-medium text-stone-700">
+                      {item.barbeiro}
+                    </span>
+                  </p>
+
                   <p className="text-stone-500 text-sm">
                     {item.data} • {item.hora}
                   </p>
                 </div>
 
-                <i className="fas fa-clock text-amber-400 text-2xl"></i>
+                <i className="fas fa-user-clock text-amber-400 text-2xl"></i>
               </div>
             ))}
           </div>
