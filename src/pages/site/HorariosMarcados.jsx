@@ -76,7 +76,7 @@ export default function HorariosMarcados() {
 
             <button
               type="submit"
-              className="px-6 py-3 rounded-lg bg-amber-400 hover:bg-amber-500 font-semibold text-stone-50 transition"
+              className="px-6 py-3 cursor-pointer rounded-lg bg-amber-400 hover:bg-amber-500 font-semibold text-stone-50 transition"
             >
               Pesquisar
             </button>
