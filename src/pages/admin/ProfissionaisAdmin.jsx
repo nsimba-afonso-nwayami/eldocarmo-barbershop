@@ -16,6 +16,7 @@ export default function ProfissionaisAdmin() {
       especialidade: "Cortes Masculinos",
       status: "Ativo",
       ultimoAgendamento: "20/01/2026",
+      foto: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgJ1FO3FHIR9B-BULDxnMCDBg19lJSDqozeZ9GvQyMZVwc1D01Ck1GVRNjOCUW",
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ export default function ProfissionaisAdmin() {
       especialidade: "Barba e Tratamentos",
       status: "Ativo",
       ultimoAgendamento: "21/01/2026",
+      foto: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgJ1FO3FHIR9B-BULDxnMCDBg19lJSDqozeZ9GvQyMZVwc1D01Ck1GVRNjOCUW",
     },
     {
       id: 3,
@@ -34,6 +36,7 @@ export default function ProfissionaisAdmin() {
       especialidade: "Coloração e Tratamentos Capilares",
       status: "Inativo",
       ultimoAgendamento: "15/01/2026",
+      foto: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgJ1FO3FHIR9B-BULDxnMCDBg19lJSDqozeZ9GvQyMZVwc1D01Ck1GVRNjOCUW",
     },
   ];
 
@@ -90,15 +93,27 @@ export default function ProfissionaisAdmin() {
               className="bg-stone-50 border border-stone-200 rounded-xl p-5 shadow-sm hover:shadow-md transition"
             >
               <div className="flex justify-between items-center mb-2">
-                <div>
-                  <p className="font-semibold text-stone-800">{profissional.nome}</p>
-                  <p className="text-stone-500 text-sm">
-                    {profissional.especialidade} • {profissional.email} • {profissional.telefone}
-                  </p>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={profissional.foto}
+                    alt={profissional.nome}
+                    className="w-14 h-14 rounded-full object-cover border border-stone-300"
+                  />
+
+                  <div>
+                    <p className="font-semibold text-stone-800">
+                      {profissional.nome}
+                    </p>
+                    <p className="text-stone-500 text-sm">
+                      {profissional.especialidade} • {profissional.email} •{" "}
+                      {profissional.telefone}
+                    </p>
+                  </div>
                 </div>
+
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusStyle(
-                    profissional.status
+                    profissional.status,
                   )}`}
                 >
                   {profissional.status}
@@ -106,7 +121,8 @@ export default function ProfissionaisAdmin() {
               </div>
 
               <p className="text-stone-600 text-sm">
-                Último Agendamento: <strong>{profissional.ultimoAgendamento}</strong>
+                Último Agendamento:{" "}
+                <strong>{profissional.ultimoAgendamento}</strong>
               </p>
 
               {/* AÇÕES */}
@@ -143,7 +159,9 @@ export default function ProfissionaisAdmin() {
         >
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-6">
-              <h2 className="text-xl font-bold text-stone-800">Carlos Barber</h2>
+              <h2 className="text-xl font-bold text-stone-800">
+                Carlos Barber
+              </h2>
               <p className="text-stone-500">Profissional • Ativo</p>
               <span className="inline-block mt-3 px-4 py-1 rounded-full text-xs font-semibold bg-green-600/20 text-green-800">
                 Ativo
@@ -153,7 +171,9 @@ export default function ProfissionaisAdmin() {
             <div className="bg-white border border-stone-200 rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-stone-500">Email</p>
-                <p className="font-semibold text-stone-800">carlos.barber@email.com</p>
+                <p className="font-semibold text-stone-800">
+                  carlos.barber@email.com
+                </p>
               </div>
               <div>
                 <p className="text-sm text-stone-500">Telefone</p>
@@ -161,7 +181,9 @@ export default function ProfissionaisAdmin() {
               </div>
               <div>
                 <p className="text-sm text-stone-500">Especialidade</p>
-                <p className="font-semibold text-stone-800">Cortes Masculinos</p>
+                <p className="font-semibold text-stone-800">
+                  Cortes Masculinos
+                </p>
               </div>
               <div>
                 <p className="text-sm text-stone-500">Último Agendamento</p>
