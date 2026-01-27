@@ -13,7 +13,7 @@ export default function PerfilProfissional() {
               {/* Foto */}
               <div className="shrink-0">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm5a0MZ8p5nPzZ6KX3FJv9xDkM7Q0W0H7W8Q&usqp=CAU"
+                  src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgJ1FO3FHIR9B-BULDxnMCDBg19lJSDqozeZ9GvQyMZVwc1D01Ck1GVRNjOCUW"
                   alt="Profissional"
                   className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-amber-400 object-cover"
                 />
