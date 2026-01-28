@@ -86,17 +86,8 @@ export default function HorariosMarcados() {
       {/* Header */}
       <Header />
 
-      {/* INTRODUÇÃO */}
-      <section className="py-10 px-6 bg-stone-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block mb-4 px-4 py-1 text-sm font-semibold rounded-full bg-amber-400 text-stone-50">
-            Horários Marcados
-          </span>
-        </div>
-      </section>
-
       {/* PESQUISA */}
-      <section className="py-6 bg-stone-50">
+      <section className="py-6 pt-26 bg-stone-50">
         <div className="max-w-4xl mx-auto px-6">
           <form className="bg-stone-200 p-4 rounded-2xl shadow-md flex flex-col md:flex-row gap-3">
             <input
