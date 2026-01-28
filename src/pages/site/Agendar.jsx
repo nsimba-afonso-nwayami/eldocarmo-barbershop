@@ -262,13 +262,17 @@ export default function Agendar() {
                 }`}
                 {...register("data")}
               />
+
+              {errors.data && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.data.message}
+                </p>
+              )}
             </div>
 
             {/* Hora */}
             <div>
-              <label
-                className="block text-stone-800 font-medium mb-2"
-              >
+              <label className="block text-stone-800 font-medium mb-2">
                 Horário
               </label>
               <input
@@ -280,6 +284,12 @@ export default function Agendar() {
                 }`}
                 {...register("hora")}
               />
+
+              {errors.hora && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.hora.message}
+                </p>
+              )}
             </div>
 
             <div className="md:col-span-2">
