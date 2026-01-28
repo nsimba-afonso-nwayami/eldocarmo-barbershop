@@ -29,6 +29,54 @@ export default function HorariosMarcados() {
       data: "21/01/2026",
       hora: "14:00",
     },
+    {
+      id: 4,
+      nome: "Mariana Costa",
+      servico: "Corte Feminino",
+      barbeiro: "Carlos",
+      data: "21/01/2026",
+      hora: "11:00",
+    },
+    {
+      id: 5,
+      nome: "Lucas Fernandes",
+      servico: "Corte Masculino",
+      barbeiro: "Miguel",
+      data: "22/01/2026",
+      hora: "09:30",
+    },
+    {
+      id: 6,
+      nome: "Fernanda Lima",
+      servico: "Penteado",
+      barbeiro: "André",
+      data: "22/01/2026",
+      hora: "13:00",
+    },
+    {
+      id: 7,
+      nome: "Rafael Gomes",
+      servico: "Barba",
+      barbeiro: "Carlos",
+      data: "23/01/2026",
+      hora: "15:30",
+    },
+    {
+      id: 8,
+      nome: "Bianca Rocha",
+      servico: "Corte + Penteado",
+      barbeiro: "Miguel",
+      data: "23/01/2026",
+      hora: "10:00",
+    },
+    {
+      id: 9,
+      nome: "Pedro Alves",
+      servico: "Corte Masculino",
+      barbeiro: "André",
+      data: "24/01/2026",
+      hora: "14:30",
+    },
   ];
 
   return (
@@ -39,7 +87,7 @@ export default function HorariosMarcados() {
       <Header />
 
       {/* INTRODUÇÃO */}
-      <section className="py-20 px-6 bg-stone-50">
+      <section className="py-22 px-6 bg-stone-50">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block mb-4 px-4 py-1 text-sm font-semibold rounded-full bg-amber-400 text-stone-50">
             Horários Marcados
@@ -48,7 +96,7 @@ export default function HorariosMarcados() {
       </section>
 
       {/* PESQUISA */}
-      <section className="py-2 bg-stone-50">
+      <section className=" bg-stone-50">
         <div className="max-w-4xl mx-auto px-6">
           <form className="bg-stone-200 p-6 rounded-2xl shadow-md flex flex-col md:flex-row gap-4">
             <input
@@ -78,10 +126,6 @@ export default function HorariosMarcados() {
       {/* LISTA DE HORÁRIOS */}
       <section className="py-20 bg-stone-100">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-stone-800 text-center mb-12">
-            Lista de <span className="text-amber-400">Agendamentos</span>
-          </h2>
-
           <div className="grid grid-cols-1 gap-8">
             {agendamentos.map((item) => (
               <div
