@@ -42,22 +42,13 @@ export default function HorariosMarcados() {
       <section className="py-20 px-6 bg-stone-50">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block mb-4 px-4 py-1 text-sm font-semibold rounded-full bg-amber-400 text-stone-50">
-            Agendamentos
-          </span>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
             Horários Marcados
-          </h1>
-
-          <p className="text-lg text-stone-500">
-            Consulte os horários já agendados e acompanhe seus atendimentos na
-            Eldocarmo Barbershop.
-          </p>
+          </span>
         </div>
       </section>
 
       {/* PESQUISA */}
-      <section className="py-12 bg-stone-50">
+      <section className="py-2 bg-stone-50">
         <div className="max-w-4xl mx-auto px-6">
           <form className="bg-stone-200 p-6 rounded-2xl shadow-md flex flex-col md:flex-row gap-4">
             <input
