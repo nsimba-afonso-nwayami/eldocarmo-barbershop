@@ -96,7 +96,7 @@ export default function HorariosMarcados() {
       </section>
 
       {/* PESQUISA */}
-      <section className=" bg-stone-50">
+      <section className="py-12 bg-stone-50">
         <div className="max-w-4xl mx-auto px-6">
           <form className="bg-stone-200 p-6 rounded-2xl shadow-md flex flex-col md:flex-row gap-4">
             <input
