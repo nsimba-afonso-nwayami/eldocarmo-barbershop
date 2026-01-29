@@ -97,6 +97,15 @@ export default function HorariosMarcados() {
     },
   ];
 
+  // AGRUPAR AGENDAMENTOS POR SERVIÇO
+  const agendamentosPorServico = agendamentos.reduce((acc, item) => {
+    if (!acc[item.servico]) {
+      acc[item.servico] = [];
+    }
+    acc[item.servico].push(item);
+    return acc;
+  }, {});
+
   return (
     <>
       <title>Horários Marcados | Eldocarmo Barbershop</title>
@@ -152,35 +161,48 @@ export default function HorariosMarcados() {
         </div>
       </section>
 
-      {/* LISTA DE HORÁRIOS */}
+      {/* LISTA DE HORÁRIOS POR SERVIÇO */}
       <section className="py-8 bg-stone-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 gap-4">
-            {agendamentos.map((item) => (
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(agendamentosPorServico).map(([servico, itens]) => (
               <div
-                key={item.id}
-                className="bg-stone-50 border border-stone-200 rounded-xl p-6 flex justify-between items-center hover:shadow-lg transition"
+                key={servico}
+                className="bg-stone-50 border border-stone-200 rounded-2xl shadow-sm p-4"
               >
-                <div>
-                  <h3 className="text-xl font-semibold text-stone-800">
-                    {item.nome}
-                  </h3>
+                {/* TÍTULO DO SERVIÇO */}
+                <h2 className="text-lg font-bold text-stone-800 mb-4 border-b border-stone-200 pb-2">
+                  {servico}
+                </h2>
 
-                  <p className="text-stone-500 text-sm">{item.servico}</p>
+                {/* AGENDAMENTOS */}
+                <div className="flex flex-col gap-3">
+                  {itens.map((item) => (
+                    <div
+                      key={item.id}
+                      className="bg-white border border-stone-200 rounded-xl p-4 flex justify-between items-center hover:shadow transition"
+                    >
+                      <div>
+                        <p className="font-semibold text-stone-800">
+                          {item.nome}
+                        </p>
 
-                  <p className="text-stone-500 text-sm">
-                    Barbeiro:{" "}
-                    <span className="font-medium text-stone-700">
-                      {item.barbeiro}
-                    </span>
-                  </p>
+                        <p className="text-stone-500 text-sm">
+                          Barbeiro:{" "}
+                          <span className="font-medium text-stone-700">
+                            {item.barbeiro}
+                          </span>
+                        </p>
 
-                  <p className="text-stone-500 text-sm">
-                    {item.data} • {item.hora}
-                  </p>
+                        <p className="text-stone-500 text-sm">
+                          {item.data} • {item.hora}
+                        </p>
+                      </div>
+
+                      <i className="fas fa-user-clock text-amber-400 text-xl"></i>
+                    </div>
+                  ))}
                 </div>
-
-                <i className="fas fa-user-clock text-amber-400 text-2xl"></i>
               </div>
             ))}
           </div>
