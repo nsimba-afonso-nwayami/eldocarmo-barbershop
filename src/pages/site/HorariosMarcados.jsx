@@ -124,7 +124,7 @@ export default function HorariosMarcados() {
       {/* FORM DE PESQUISA (ANIMADO) */}
       <section
         className={`overflow-hidden transition-all duration-500 ease-in-out bg-stone-50
-         ${mostrarPesquisa ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
+         ${mostrarPesquisa ? "max-h-60 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
       `}
       >
         <div className="max-w-4xl mx-auto px-6">
