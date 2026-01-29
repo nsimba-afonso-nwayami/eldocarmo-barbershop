@@ -55,6 +55,46 @@ export default function HorariosMarcados() {
       data: "20/01/2026",
       hora: "10:30",
     },
+    {
+      id: 4,
+      nome: "Mariana Costa",
+      servico: "Corte Feminino",
+      barbeiro: "Carlos",
+      data: "21/01/2026",
+      hora: "11:00",
+    },
+    {
+      id: 6,
+      nome: "Fernanda Lima",
+      servico: "Penteado",
+      barbeiro: "André",
+      data: "22/01/2026",
+      hora: "13:00",
+    },
+    {
+      id: 3,
+      nome: "André Silva",
+      servico: "Corte + Barba",
+      barbeiro: "Miguel",
+      data: "21/01/2026",
+      hora: "14:00",
+    },
+    {
+      id: 9,
+      nome: "Pedro Alves",
+      servico: "Corte Masculino",
+      barbeiro: "André",
+      data: "24/01/2026",
+      hora: "14:30",
+    },
+    {
+      id: 7,
+      nome: "Rafael Gomes",
+      servico: "Barba",
+      barbeiro: "Carlos",
+      data: "23/01/2026",
+      hora: "15:30",
+    },
   ];
 
   return (
