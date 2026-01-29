@@ -1,9 +1,27 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import { useEffect, useState } from "react";
 
 export default function HorariosMarcados() {
-  // DADOS MOCK (depois vem da API)
+  const [mostrarPesquisa, setMostrarPesquisa] = useState(false);
+  const [horaAtual, setHoraAtual] = useState("");
+
+  // RELÓGIO DIGITAL
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const agora = new Date();
+      const hora = agora.toLocaleTimeString("pt-PT", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      setHoraAtual(hora);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const agendamentos = [
     {
       id: 1,
@@ -37,57 +55,38 @@ export default function HorariosMarcados() {
       data: "20/01/2026",
       hora: "10:30",
     },
-    {
-      id: 4,
-      nome: "Mariana Costa",
-      servico: "Corte Feminino",
-      barbeiro: "Carlos",
-      data: "21/01/2026",
-      hora: "11:00",
-    },
-    {
-      id: 6,
-      nome: "Fernanda Lima",
-      servico: "Penteado",
-      barbeiro: "André",
-      data: "22/01/2026",
-      hora: "13:00",
-    },
-    {
-      id: 3,
-      nome: "André Silva",
-      servico: "Corte + Barba",
-      barbeiro: "Miguel",
-      data: "21/01/2026",
-      hora: "14:00",
-    },
-    {
-      id: 9,
-      nome: "Pedro Alves",
-      servico: "Corte Masculino",
-      barbeiro: "André",
-      data: "24/01/2026",
-      hora: "14:30",
-    },
-    {
-      id: 7,
-      nome: "Rafael Gomes",
-      servico: "Barba",
-      barbeiro: "Carlos",
-      data: "23/01/2026",
-      hora: "15:30",
-    },
   ];
 
   return (
     <>
       <title>Horários Marcados | Eldocarmo Barbershop</title>
 
-      {/* Header */}
       <Header />
 
-      {/* PESQUISA */}
-      <section className="py-6 pt-26 bg-stone-50">
+      {/* TOPO: RELÓGIO + PESQUISA */}
+      <section className="py-23 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          {/* RELÓGIO */}
+          <div className="bg-stone-800 text-amber-400 px-6 py-3 rounded-xl shadow-md font-mono text-2xl tracking-widest">
+            {horaAtual}
+          </div>
+
+          {/* BOTÃO PESQUISA */}
+          <button
+            onClick={() => setMostrarPesquisa(!mostrarPesquisa)}
+            className="w-12 h-12 cursor-pointer flex items-center justify-center rounded-full bg-amber-400 hover:bg-amber-500 text-stone-50 shadow-md transition"
+          >
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
+      </section>
+
+      {/* FORM DE PESQUISA (ANIMADO) */}
+      <section
+        className={`overflow-hidden transition-all duration-500 ease-in-out bg-stone-50
+         ${mostrarPesquisa ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
+      `}
+      >
         <div className="max-w-4xl mx-auto px-6">
           <form className="bg-stone-200 p-4 rounded-2xl shadow-md flex flex-col md:flex-row gap-3">
             <input
@@ -96,7 +95,6 @@ export default function HorariosMarcados() {
               className="flex-1 p-3 rounded-lg bg-stone-50 border border-stone-300 focus:outline-none focus:border-amber-400"
             />
 
-            {/* FILTRO DE BARBEIROS */}
             <select className="p-3 rounded-lg bg-stone-50 border border-stone-300 focus:outline-none focus:border-amber-400">
               <option value="">Todos os barbeiros</option>
               <option value="Carlos">Carlos</option>
@@ -108,7 +106,7 @@ export default function HorariosMarcados() {
               type="submit"
               className="px-6 py-3 cursor-pointer rounded-lg bg-amber-400 hover:bg-amber-500 font-semibold text-stone-50 transition"
             >
-              Pesquisar
+              Filtrar
             </button>
           </form>
         </div>
@@ -149,7 +147,6 @@ export default function HorariosMarcados() {
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </>
   );
