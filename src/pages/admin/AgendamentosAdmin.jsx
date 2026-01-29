@@ -10,6 +10,8 @@ export default function AgendamentosAdmin() {
     {
       id: 1,
       cliente: "João da Silva",
+      telefone: "923 456 789",
+      email: "joao@email.com",
       servico: "Corte Masculino",
       profissional: "Carlos Barber",
       data: "20/01/2026",
@@ -19,6 +21,8 @@ export default function AgendamentosAdmin() {
     {
       id: 2,
       cliente: "Maria Oliveira",
+      telefone: "934 111 222",
+      email: "maria@email.com",
       servico: "Barba Completa",
       profissional: "André Barber",
       data: "21/01/2026",
@@ -82,6 +86,9 @@ export default function AgendamentosAdmin() {
                   <p className="text-stone-500 text-sm">
                     {item.servico} • {item.profissional}
                   </p>
+                  <p className="text-stone-500 text-sm">{item.telefone}</p>
+
+                  <p className="text-stone-500 text-sm">{item.email}</p>
                 </div>
 
                 <span
@@ -152,6 +159,16 @@ export default function AgendamentosAdmin() {
               <div>
                 <p className="text-sm text-stone-500">Profissional</p>
                 <p className="font-semibold text-stone-800">Carlos Barber</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-stone-500">Telefone</p>
+                <p className="font-semibold text-stone-800">923 456 789</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-stone-500">Email</p>
+                <p className="font-semibold text-stone-800">joao@email.com</p>
               </div>
 
               <div>
